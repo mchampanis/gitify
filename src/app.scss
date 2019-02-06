@@ -344,6 +344,14 @@ $modal-scale-min: .35;
   .btn-logout > svg {
     height: 1.25em;
   }
+
+  .modal-footer {
+    justify-content: space-between;
+
+    .version {
+      font-style: italic;
+    }
+  }
 }
 
 /* @end Settings */

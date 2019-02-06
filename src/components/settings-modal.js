@@ -162,12 +162,12 @@ export class SettingsModal extends React.Component {
               </Radio>
             </RadioGroup>
 
-            <hr />
-
-            Version: {remote.app.getVersion()}
           </div>
 
           <div className="modal-footer">
+            <small className="version">
+              v{remote.app.getVersion()}
+            </small>
             <button
               className="btn btn-logout btn-outline-danger"
               onClick={() => this.logout()}
