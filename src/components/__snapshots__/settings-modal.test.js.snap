@@ -330,13 +330,16 @@ exports[`components/settings-modal.js should render itself & its children (open 
           </span>
         </label>
       </div>
-      <hr />
-      Version: 
-      0.0.1
     </div>
     <div
       className="modal-footer"
     >
+      <small
+        className="version"
+      >
+        v
+        0.0.1
+      </small>
       <button
         className="btn btn-logout btn-outline-danger"
         onClick={[Function]}
