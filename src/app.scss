@@ -48,12 +48,6 @@ $alert-danger-text: $white;
 
 /* @group Mixins */
 
-// Border Radius (Same Corners)
-@mixin border-radius($radius: 5px) {
-  border-radius: $radius;
-  background-clip: padding-box;
-}
-
 @mixin truncate-text {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -427,7 +421,6 @@ $modal-scale-min: .35;
     font-weight: 600;
 
     .avatar {
-      @include border-radius(50%);
       max-width: 25px;
     }
   }
