@@ -10,6 +10,7 @@ Immutable.Map {
   showSettingsModal: false,
   hasStarred: true,
   showAppIcon: "both",
+  hideExtraneous: false,
 }
 `;
 
@@ -23,6 +24,7 @@ Immutable.Map {
   showSettingsModal: false,
   hasStarred: false,
   showAppIcon: "both",
+  hideExtraneous: false,
 }
 `;
 
@@ -36,6 +38,7 @@ Immutable.Map {
   showSettingsModal: true,
   hasStarred: false,
   showAppIcon: "both",
+  hideExtraneous: false,
 }
 `;
 
@@ -62,6 +65,7 @@ Immutable.Map {
   showSettingsModal: false,
   hasStarred: false,
   showAppIcon: "both",
+  hideExtraneous: false,
 }
 `;
 
@@ -75,5 +79,6 @@ Immutable.Map {
   showSettingsModal: false,
   hasStarred: false,
   showAppIcon: "both",
+  hideExtraneous: false,
 }
 `;

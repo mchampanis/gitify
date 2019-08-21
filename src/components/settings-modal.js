@@ -144,6 +144,20 @@ export class SettingsModal extends React.Component {
               </Checkbox>
             </div>
 
+            <div className="row setting">
+              <Checkbox
+                className="setting-hide-extraneous"
+                checked={settings.get('hideExtraneous')}
+                onChange={evt =>
+                  this.props.updateSetting(
+                    'hideExtraneous',
+                    evt.target.checked
+                  )}
+              >
+                Hide extraneous buttons
+              </Checkbox>
+            </div>
+
             <RadioGroup
               value={settings.get('showAppIcon')}
               onChange={evt =>

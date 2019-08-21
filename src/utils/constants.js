@@ -8,7 +8,7 @@ export default {
     clientSecret: '9670de733096c15322183ff17ed0fc8704050379',
   },
 
-  REPO_SLUG: 'manosim/gitify',
+  REPO_SLUG: 'mchampanis/gitify',
 
   // Storage
   STORAGE_KEY: 'gitify-storage',

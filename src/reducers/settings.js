@@ -10,6 +10,7 @@ const initialState = Map({
   showSettingsModal: false,
   hasStarred: false,
   showAppIcon: 'both',
+  hideExtraneous: false,
 });
 
 export default function reducer(state = initialState, action) {

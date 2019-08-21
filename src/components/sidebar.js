@@ -21,6 +21,7 @@ export class Sidebar extends React.Component {
     hasStarred: PropTypes.bool.isRequired,
     isEitherLoggedIn: PropTypes.bool.isRequired,
     isGitHubLoggedIn: PropTypes.bool.isRequired,
+    hideExtraneous: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -48,8 +49,10 @@ export class Sidebar extends React.Component {
     }
   }
 
-  onOpenBrowser() {
-    shell.openExternal(`https://www.github.com/${Constants.REPO_SLUG}`);
+  onOpenBrowser = () => {
+    if (!this.props.hideExtraneous) {
+      shell.openExternal(`https://www.github.com/${Constants.REPO_SLUG}`);
+    }
   }
 
   _renderGitHubAccount() {
@@ -113,6 +116,7 @@ export class Sidebar extends React.Component {
       isEitherLoggedIn,
       isGitHubLoggedIn,
       notifications,
+      hideExtraneous
     } = this.props;
     const notificationsCount = notifications.reduce(
       (memo, acc) => memo + acc.get('notifications').size,
@@ -158,23 +162,24 @@ export class Sidebar extends React.Component {
           this._renderGitHubAccount()}
         {this._renderEnterpriseAccounts()}
 
-        <div className="footer">
-          {!!isEitherLoggedIn &&
-            <Link
-              to="/enterpriselogin"
-              className="btn btn-block btn-sm btn-outline-secondary btn-add"
-            >
-              Add <br />Enterprise
-            </Link>}
+        {!hideExtraneous &&
+          <div className="footer">
+            {!!isEitherLoggedIn &&
+              <Link
+                to="/enterpriselogin"
+                className="btn btn-block btn-sm btn-outline-secondary btn-add"
+              >
+                Add <br />Enterprise
+              </Link>}
 
-          {!hasStarred &&
-            <button
-              className="btn btn-block btn-sm btn-outline-secondary btn-star"
-              onClick={this.onOpenBrowser}
-            >
-              <Octicon icon={markGithub} /> Star
-            </button>}
-        </div>
+            {!hasStarred &&
+              <button
+                className="btn btn-block btn-sm btn-outline-secondary btn-star"
+                onClick={this.onOpenBrowser}
+              >
+                <Octicon icon={markGithub} /> Star
+              </button>}
+          </div>}
       </div>
     );
   }
@@ -183,6 +188,7 @@ export class Sidebar extends React.Component {
 export function mapStateToProps(state) {
   const enterpriseAccounts = state.auth.get('enterpriseAccounts');
   const isGitHubLoggedIn = state.auth.get('token') !== null;
+  const hideExtraneous = state.settings.get('hideExtraneous');
   const connectedAccounts = enterpriseAccounts.reduce(
     memo => memo + 1,
     isGitHubLoggedIn ? 1 : 0
@@ -195,6 +201,7 @@ export function mapStateToProps(state) {
     enterpriseAccounts,
     connectedAccounts,
     hasStarred: state.settings.get('hasStarred'),
+    hideExtraneous,
   };
 }
 
